@@ -3,14 +3,14 @@ package Classes;
 import Interfaces.IDictionary;
 
 
-public class Dictionary<K, V> implements IDictionary<K, V> {
+public class HashTableDictionary<K, V> implements IDictionary<K, V> {
     final private int[] primes = {12, 283, 557, 1019, 2053, 4051, 8087, 16087};
     private int N;
     private int size;
     private SinglyLinkedList.Node temp; //used in multiple parts of the below code to avoid code repetition
     private SinglyLinkedList[] values;
 
-    public Dictionary() {
+    public HashTableDictionary() {
         N = primes[0];
         size = 0;
         values = new SinglyLinkedList[N];
@@ -27,7 +27,7 @@ public class Dictionary<K, V> implements IDictionary<K, V> {
     }
 
     @Override
-    public V get(Object key) {
+    public V get(K key) {
         if (key == null) throw new NullPointerException("key is null");
 
         int index = key.hashCode() % N;
@@ -51,7 +51,9 @@ public class Dictionary<K, V> implements IDictionary<K, V> {
     }
 
     @Override
-    public V set(Object key, Object value) {
+    public V set(K key, V value) {
+        //a
+        if (key == null || value == null) throw new NullPointerException();
         V v = get(key);
         if (v != null) {
             temp.getNext().setContent(new Pair(key, value));
@@ -70,10 +72,14 @@ public class Dictionary<K, V> implements IDictionary<K, V> {
     }
 
     @Override
-    public V remove(Object key) {
+    public V remove(K key) {
+        //added throw ... & size --
+        if (size == 0) throw new RuntimeException();
         V value = get(key);
-        if (value != null) temp.removeNext();
+        if (value == null) throw new RuntimeException();
+        temp.removeNext();
         return value;
+
     }
 
     @Override
