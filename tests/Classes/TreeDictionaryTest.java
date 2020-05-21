@@ -24,7 +24,11 @@ class TreeDictionaryTest {
         assertTrue(TreeDictionary.isEmpty());
         Person p1 = new Person("Ahmad", "7amada", 124536);
         TreeDictionary.set("Ahmad", p1);
+        assertFalse(TreeDictionary.isEmpty());
         assertEquals(p1, TreeDictionary.get("Ahmad"));
+        assertEquals(p1, TreeDictionary.remove("Ahmad"));
+        assertTrue(TreeDictionary.isEmpty());
+        TreeDictionary.set("Ahmad", p1);
         Person p2 = new Person("Ahmad", "mido", 124536);
         TreeDictionary.set("Ahmad2", p2);
         assertEquals(p1, TreeDictionary.get("Ahmad"));
@@ -54,7 +58,11 @@ class TreeDictionaryTest {
         assertEquals(p2, TreeDictionary.get("Ahmad2"));
         assertEquals(p3, TreeDictionary.get("Ahmad3"));
         assertEquals(p11, TreeDictionary.get("Ahmad12"));
+        assertEquals(p7, TreeDictionary.get("Ahmad7"));
         assertFalse(TreeDictionary.isEmpty());
+        assertNull(TreeDictionary.remove("M"));
+        assertEquals(p7, TreeDictionary.remove("Ahmad7"));
+        assertNull(TreeDictionary.get("Ahmad7"));
     }
 
 }
