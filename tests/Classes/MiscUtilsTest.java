@@ -10,6 +10,8 @@ class MiscUtilsTest {
     void test() {
         BinaryTreeNode n1 = new BinaryTreeNode(5);
         MiscUtils mu = new MiscUtils();
+        BinaryTreeNode temp = mu.insert(null, 4);
+        assertEquals(4, mu.sumRange(temp, 4, 4));
         mu.insert(n1, 4);
         mu.insert(n1, 5);
         mu.insert(n1, 7);

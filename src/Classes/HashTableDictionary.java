@@ -73,11 +73,12 @@ public class HashTableDictionary<K, V> implements IDictionary<K, V> {
 
     @Override
     public V remove(K key) {
-        //added throw ... & size --
-        if (size == 0) throw new RuntimeException();
+
+        if (size == 0) return null;
         V value = get(key);
-        if (value == null) throw new RuntimeException();
+        if (value == null) return null;
         temp.removeNext();
+        --size;
         return value;
 
     }

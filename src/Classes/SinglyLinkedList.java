@@ -26,6 +26,7 @@ public class SinglyLinkedList {
             if (this.next == null) throw new NullPointerException("attempting to remove next node of last node");
             this.next = this.next.next;
             --size;
+            last = getNode(size - 1);
         }
 
         public Object getContent() {

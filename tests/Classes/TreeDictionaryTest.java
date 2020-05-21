@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TreeDictionaryTest {
 
-    private class Person {
+    private static class Person {
         String name;
         String nickName;
         int ID;
