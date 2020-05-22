@@ -143,8 +143,8 @@ public class TreeDictionary<K extends Comparable<K>, V> implements IDictionary<K
             parent = myNode;
             myNode = myNode.left;
         }
-        if (parent == node) parent.right = null;
-        else parent.left = null;
+        if (parent == node) parent.right = myNode.right;
+        else parent.left = myNode.right;
         return (Pair) myNode.element;
     }
 }
